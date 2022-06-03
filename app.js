@@ -1,6 +1,17 @@
-const logger = require("./logger");
+const http = require("http");
 
-// logger.log("message");
+const server = http.createServer((req, res) => {
+  if (req.url === "/") {
+    res.write("Hello world");
+    res.end();
+  }
+  if (req.url === "/api/courses") {
+    res.write(JSON.stringify([1, 2, 3]));
+    res.end();
+  }
+});
+//this server is an event emitter, so it has all the capabilities of EventEmitter.
 
-//asi se llamaria al objeto importado, para llamar a la funcion:
-logger("message");
+server.listen(3000);
+
+console.log("Listening on port 3000...");

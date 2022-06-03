@@ -1,3 +1,50 @@
+6/2
+const logger = require("./logger");
+
+logger.log("message");
+
+asi se llamaria al objeto importado, para llamar a la funcion:
+logger("message");
+------------*-----------
+const path = require("path");
+var pathObj = path.parse(__filename);
+
+console.log(pathObj);
+------------*------------
+const os = require("os");
+
+var totalMemory = os.totalmem();
+var freeMemory = os.freemem();
+
+console.log(`Total memory: ${totalMemory}`);
+console.log(`Free memory: ${freeMemory}`);
+
+-------*-----------
+const fs = require("fs");
+const files = fs.readdirSync("./");
+console.log(files);
+
+fs.readdir("$", function (err, files) {
+  if (err) console.log("Error", err);
+  else console.log("Result", files);
+});
+
+----------*-*---------
+appjs
+const EventEmitter = require("events");
+
+const Logger = require("./Logger");
+const logger = new Logger();
+
+// register a listener .addListener() does the same.
+logger.on("messageLogged", (arg) => {
+  console.log("Listener called", arg);
+});
+
+logger.log("message");
+
+
+logger
 const EventEmitter = require("events");
 
 var url = "http://mylogger.io/log";
